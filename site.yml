@@ -51,3 +51,9 @@
     - analytics_worker_1
   roles:
     - analytics-worker
+
+- name: Create Load balancer for ESB nodes
+  hosts:
+    - load_balancer_1
+  roles: 
+    - lb
