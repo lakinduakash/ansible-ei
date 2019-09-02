@@ -1,4 +1,4 @@
-upstream ssl.wso2.ei.com {
+upstream ssl.{{ server_name }} {
     server {{ server1_ip }}:8243;
     server {{ server2_ip }}:8243;
     ip_hash;
