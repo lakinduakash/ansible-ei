@@ -33,3 +33,7 @@ analytics-worker
 bps
 broker
 integrator
+
+[lb]
+
+load_balancer_1 ansible_host=[ip_address] ansible_user=[ssh_user]
