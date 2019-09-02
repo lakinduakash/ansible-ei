@@ -1,0 +1,11 @@
+---
+nginx_conf_dir: /etc/nginx/conf.d
+
+sever1_ip: [ip]
+server2_ip: [ip]
+server_name: ei.wso2.com
+
+nginx_http_conf_src: ei.http.conf.j2
+nginx_http_conf_dest: ${nginx_conf_dir}ei.http.conf
+nginx_https_conf_src: ei.https.conf.j2
+nginx_https_conf_dest: ${nginx_conf_dir}/ei.https.conf
