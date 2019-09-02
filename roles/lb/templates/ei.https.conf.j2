@@ -1,0 +1,26 @@
+upstream ssl.wso2.ei.com {
+    server {{ server1_ip }}:8243;
+    server {{ server2_ip }}:8243;
+    ip_hash;
+}
+  
+server {
+listen 443;
+    server_name {{ server_name }};
+    ssl on;
+    ssl_certificate /etc/nginx/ssl/server.crt;
+    ssl_certificate_key /etc/nginx/ssl/server.key;
+    location / {
+proxy_set_header X-Forwarded-Host $host;
+proxy_set_header X-Forwarded-Server $host;
+proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+proxy_set_header Host $http_host;
+proxy_read_timeout 5m;
+proxy_send_timeout 5m;
+proxy_pass https://ssl.{{ server_name }};
+  
+proxy_http_version 1.1;
+proxy_set_header Upgrade $http_upgrade;
+proxy_set_header Connection "upgrade";
+        }
+}
